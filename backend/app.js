@@ -21,7 +21,7 @@ app.get("/",(req,res)=>{
 })
 
 
-// app.use('/user', userRoute)
+app.use('/user', userRoute)
 
 
 
