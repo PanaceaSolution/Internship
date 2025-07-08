@@ -1,7 +1,9 @@
 const express = require('express')
 const cors = require("cors")
-const { connectDatabase } = require('./database/database')
 require('dotenv').config()
+const { connectDatabase } = require('./database/database')
+
+const userRoute = require('./route/userRoute')
 
 const app = express()
 app.use(express.json())
@@ -19,7 +21,7 @@ app.get("/",(req,res)=>{
 })
 
 
-
+// app.use('/user', userRoute)
 
 
 
