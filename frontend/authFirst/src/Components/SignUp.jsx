@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { APIINSTANCE } from "../api";
+import { Link } from "react-router-dom";
 
 function SignUp() {
   const [email, SetEmail] = useState("");
@@ -68,7 +69,6 @@ function SignUp() {
               />
             </div>
 
-
             <div className="space-x-2 flex-col flex">
               <label>Phone Number</label>
               <input
@@ -81,6 +81,10 @@ function SignUp() {
             <button className="bg-black text-white p-3 rounded-xl cursor-pointer">
               Sign Up
             </button>
+
+            <label>
+              Already have an account ? <Link to={"/signin"}>sign in</Link>
+            </label>
           </form>
         </div>
       </div>
