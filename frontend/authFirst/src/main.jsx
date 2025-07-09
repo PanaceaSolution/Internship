@@ -1,11 +1,11 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createRoot } from "react-dom/client"
 import "./index.css";
 import SignUp from "./Components/SignUp.jsx";
 import { Toaster } from "react-hot-toast";
 import Authtest from "./Components/authtest.jsx";
 import SignIn from "./Components/SignIn.jsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

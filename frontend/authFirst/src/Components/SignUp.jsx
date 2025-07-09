@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { APIINSTANCE } from "../api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import toast from "react-hot-toast";
 
 function SignUp() {
+  const navigate = useNavigate();
   const [email, SetEmail] = useState("");
   const [password, Setpassword] = useState("");
   const [username, SetUsername] = useState("");
@@ -18,15 +20,15 @@ function SignUp() {
 
   async function onSubmit(e) {
     e.preventDefault();
-    console.log(body);
 
     try {
       const response = await APIINSTANCE.post("/register", body);
-      console.log("ssignedup successfully", response);
-      toast.success("signedup successfully");
+      toast.success("Signed up successfully!");
+      navigate('/signin');
     } catch (error) {
-      console.log(error);
-      toast.error(error);
+      const errorMessage = error.response?.data?.message || error.message || "Registration failed";
+      toast.error(errorMessage);
+      console.error("Registration error:", error);
     }
   }
 
