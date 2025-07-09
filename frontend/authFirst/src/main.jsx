@@ -15,7 +15,6 @@ createRoot(document.getElementById("root")).render(
         containerClassName=""
         containerStyle={{}}
         toastOptions={{
-          // Define default options
           className: "",
           duration: 5000,
           removeDelay: 1000,
@@ -24,7 +23,6 @@ createRoot(document.getElementById("root")).render(
             color: "#fff",
           },
 
-          // Default options for specific types
           success: {
             duration: 3000,
             iconTheme: {
