@@ -1,11 +1,25 @@
 import { useState } from "react";
+import { APIINSTANCE } from "../api";
 
 function SignUp() {
   const [email, SetEmail] = useState("");
-  const [password, Setpassword] = useState();
-  const [username, SetUsername] = useState();
+  const [password, Setpassword] = useState("");
+  const [username, SetUsername] = useState("");
 
   console.log(username);
+
+  const body = {
+    email,
+    password,
+    username,
+  };
+
+  async function onSubmit(e) {
+    e.preventDefault();
+    console.log(body);
+    // const response = APIINSTANCE.post("", body);
+  }
+
 
   return (
     <div className=" flex h-screen  w-screen  justify-center   items-center ">
@@ -18,7 +32,10 @@ function SignUp() {
         </div>
 
         <div className=" w-1/2 ">
-          <form className="tracking-wide flex flex-col justify-center items-center h-full    space-y-2  ">
+          <form
+            className="tracking-wide flex flex-col justify-center items-center h-full    space-y-2  "
+            onSubmit={onSubmit}
+          >
             <div className="space-x-2 flex-col flex">
               <label>User name</label>
               <input
@@ -31,22 +48,24 @@ function SignUp() {
             <div className="space-x-2 flex-col flex">
               <label>Gmail</label>
               <input
-                type="text"
+                type="email"
                 className="border-2 border-black rounded-md p-1"
-                onChange={(e) => SetUsername(e.target.value)}
+                onChange={(e) => SetEmail(e.target.value)}
               />
             </div>
 
             <div className="space-x-2 flex-col flex">
               <label>Password</label>
               <input
-                type="text"
+                type="password"
                 className="border-2 border-black rounded-md p-1"
-                onChange={(e) => SetUsername(e.target.value)}
+                onChange={(e) => Setpassword(e.target.value)}
               />
             </div>
 
-            <button>Sign Up</button>
+            <button className="bg-black text-white p-3 rounded-xl cursor-pointer">
+              Sign Up
+            </button>
           </form>
         </div>
       </div>
