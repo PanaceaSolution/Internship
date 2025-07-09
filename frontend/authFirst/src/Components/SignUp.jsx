@@ -30,10 +30,6 @@ function SignUp() {
     }
   }
 
-  useEffect(() => {
-    toast.success("react-toast-working");
-  }, []);
-
   return (
     <div className=" flex h-screen  w-screen  justify-center   items-center ">
       <div className="flex w-3/4 h-3/4 shadow-2xl bg-gray-200 rounded-lg overflow-hidden">

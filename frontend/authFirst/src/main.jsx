@@ -3,7 +3,8 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import SignUp from "./Components/SignUp.jsx";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
+import Authtest from "./Components/authtest.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -34,6 +35,7 @@ createRoot(document.getElementById("root")).render(
       />
       <Routes>
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/secure" element={<Authtest />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
