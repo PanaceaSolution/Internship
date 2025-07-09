@@ -6,7 +6,6 @@ function SignUp() {
   const [password, Setpassword] = useState("");
   const [name, SetUsername] = useState("");
 
-
   const body = {
     email,
     password,
@@ -18,9 +17,11 @@ function SignUp() {
     console.log(body);
 
     try {
-      // const response =await APIINSTANCE.post("/user/signup", body);
-      // console.log("ssignedup successfully")
-    } catch (error) {}
+      const response = await APIINSTANCE.post("/user/signup", body);
+      console.log("ssignedup successfully", response);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
