@@ -1,12 +1,13 @@
-import React from 'react'
-import SignIn from './Components/SignIn'
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom'; 
+import SignIn from './Components/SignIn';
 
 const App = () => {
   return (
-    <div>
+    <BrowserRouter>
       <SignIn />
-    </div>
-  )
-}
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;
