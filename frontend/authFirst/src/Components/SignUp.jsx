@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { APIINSTANCE } from "../api";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function SignUp() {
   const [email, SetEmail] = useState("");
@@ -22,10 +23,16 @@ function SignUp() {
     try {
       const response = await APIINSTANCE.post("/register", body);
       console.log("ssignedup successfully", response);
+      toast.success("signedup successfully");
     } catch (error) {
       console.log(error);
+      toast.error(error);
     }
   }
+
+  useEffect(() => {
+    toast.success("react-toast-working");
+  }, []);
 
   return (
     <div className=" flex h-screen  w-screen  justify-center   items-center ">
