@@ -4,12 +4,14 @@ import { APIINSTANCE } from "../api";
 function SignUp() {
   const [email, SetEmail] = useState("");
   const [password, Setpassword] = useState("");
-  const [name, SetUsername] = useState("");
+  const [username, SetUsername] = useState("");
+  const [phoneNum, SetphoneNum] = useState("");
 
   const body = {
     email,
     password,
-    name,
+    username,
+    phoneNum,
   };
 
   async function onSubmit(e) {
@@ -17,7 +19,7 @@ function SignUp() {
     console.log(body);
 
     try {
-      const response = await APIINSTANCE.post("/user/signup", body);
+      const response = await APIINSTANCE.post("/register", body);
       console.log("ssignedup successfully", response);
     } catch (error) {
       console.log(error);
@@ -63,6 +65,16 @@ function SignUp() {
                 type="password"
                 className="border-2 border-black rounded-md p-1"
                 onChange={(e) => Setpassword(e.target.value)}
+              />
+            </div>
+
+
+            <div className="space-x-2 flex-col flex">
+              <label>Phone Number</label>
+              <input
+                type="number"
+                className="border-2 border-black rounded-md p-1"
+                onChange={(e) => SetphoneNum(e.target.value)}
               />
             </div>
 
