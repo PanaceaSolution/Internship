@@ -17,9 +17,12 @@ function SignUp() {
   async function onSubmit(e) {
     e.preventDefault();
     console.log(body);
-    // const response = APIINSTANCE.post("", body);
-  }
 
+    try {
+      // const response =await APIINSTANCE.post("/user/signup", body);
+      // console.log("ssignedup successfully")
+    } catch (error) {}
+  }
 
   return (
     <div className=" flex h-screen  w-screen  justify-center   items-center ">
