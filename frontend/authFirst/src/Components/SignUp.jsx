@@ -4,14 +4,14 @@ import { APIINSTANCE } from "../api";
 function SignUp() {
   const [email, SetEmail] = useState("");
   const [password, Setpassword] = useState("");
-  const [username, SetUsername] = useState("");
+  const [name, SetUsername] = useState("");
 
   console.log(username);
 
   const body = {
     email,
     password,
-    username,
+    name,
   };
 
   async function onSubmit(e) {
