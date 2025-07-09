@@ -1,27 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { APIINSTANCE } from "../api";
+import { Link, useNavigate } from "react-router-dom";
+
+import toast from "react-hot-toast";
 
 function SignUp() {
+  const navigate = useNavigate();
   const [email, SetEmail] = useState("");
   const [password, Setpassword] = useState("");
-  const [name, SetUsername] = useState("");
-
+  const [username, SetUsername] = useState("");
+  const [phoneNum, SetphoneNum] = useState("");
 
   const body = {
     email,
     password,
-    name,
+    username,
+    phoneNum,
   };
 
   async function onSubmit(e) {
     e.preventDefault();
-    console.log(body);
 
     try {
-      // const response =await APIINSTANCE.post("/user/signup", body);
-      // console.log("ssignedup successfully")
-    } catch (error) {}
+      const response = await APIINSTANCE.post("/register", body);
+      toast.success("Signed up successfully!");
+      navigate('/signin');
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || error.message || "Registration failed";
+      toast.error(errorMessage);
+      console.error("Registration error:", error);
+    }
   }
+
+  useEffect(() => {
+    toast.success("react-toast-working");
+  }, []);
 
   return (
     <div className=" flex h-screen  w-screen  justify-center   items-center ">
@@ -65,9 +78,22 @@ function SignUp() {
               />
             </div>
 
+            <div className="space-x-2 flex-col flex">
+              <label>Phone Number</label>
+              <input
+                type="number"
+                className="border-2 border-black rounded-md p-1"
+                onChange={(e) => SetphoneNum(e.target.value)}
+              />
+            </div>
+
             <button className="bg-black text-white p-3 rounded-xl cursor-pointer">
               Sign Up
             </button>
+
+            <label>
+              Already have an account ? <Link to={"/signin"}>sign in</Link>
+            </label>
           </form>
         </div>
       </div>

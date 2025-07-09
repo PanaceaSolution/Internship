@@ -4,8 +4,15 @@ import { useNavigate } from 'react-router-dom';
 const HomePage = () => {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
+  React.useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/signin');
+    }
+  }, [navigate]);
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
     navigate('/signin');
   };
 

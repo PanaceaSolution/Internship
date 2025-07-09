@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -10,8 +10,7 @@ const SignIn = () => {
     e.preventDefault();
 
     try {
-     const response = await fetch('http://localhost:5000/register', {
-
+      const response = await fetch('http://localhost:5000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -21,13 +20,14 @@ const SignIn = () => {
       const data = await response.json();
 
       if (response.ok) {
+        localStorage.setItem('token', data.token);
         alert("Login successful!");
-        navigate('/');  
+        navigate('/');
       } else {
         alert(data.message || "Login failed. Please try again.");
       }
     } catch (error) {
-      alert("Error: " + error.message);
+      alert("Error: " + (error.response?.data?.message || error.message));
     }
   };
 
@@ -88,8 +88,8 @@ const SignIn = () => {
 
           <p className="text-sm text-gray-600 text-center">
             Don't have an account yet?{' '}
-            <a href="/signup" className="text-blue-500 hover:underline">Sign Up</a>{' '}
-            <a href="/" className="text-blue-500 hover:underline">Back to page</a>
+            <Link to="/signup" className="text-blue-500 hover:underline">Sign Up</Link>{' '}
+            <Link to="/" className="text-blue-500 hover:underline">Back to page</Link>
           </p>
         </form>
       </div>
