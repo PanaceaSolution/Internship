@@ -1,19 +1,13 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import withAuth from "../util/authenticator";
 
 const HomePage = () => {
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      navigate('/signin');
-    }
-  }, [navigate]);
-
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/signin');
+    localStorage.removeItem("token");
+    navigate("/signin");
   };
 
   return (
@@ -29,10 +23,12 @@ const HomePage = () => {
       </header>
 
       <main className="flex-grow flex flex-col justify-center items-center px-4">
-        <h2 className="text-4xl font-semibold mb-4">Welcome to the Homepage!</h2>
+        <h2 className="text-4xl font-semibold mb-4">
+          Welcome to the Homepage!
+        </h2>
         <p className="text-lg max-w-xl text-center">
-          You are successfully logged in. This is a simple homepage component with a
-          clean design. You can customize it as per your needs.
+          You are successfully logged in. This is a simple homepage component
+          with a clean design. You can customize it as per your needs.
         </p>
       </main>
 
@@ -43,4 +39,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default withAuth(HomePage);

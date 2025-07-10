@@ -22,7 +22,7 @@ const SignIn = () => {
       if (response.ok) {
         localStorage.setItem('token', data.token);
         alert("Login successful!");
-        navigate('/');
+        navigate('/homepage');
       } else {
         alert(data.message || "Login failed. Please try again.");
       }

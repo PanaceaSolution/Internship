@@ -9,7 +9,7 @@ import Authtest from "./Components/authtest.jsx";
 
 const App = () => {
   return (
-     <BrowserRouter>
+    <BrowserRouter>
       <Toaster
         position="bottom-center"
         reverseOrder={false}
@@ -39,6 +39,7 @@ const App = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/secure" element={<Authtest />} />
+        <Route path="/homepage" element={<HomePage />} />
       </Routes>
     </BrowserRouter>
   );
