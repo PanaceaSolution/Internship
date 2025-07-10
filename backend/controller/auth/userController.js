@@ -34,7 +34,7 @@ exports.loginUser = async (req, res) => {
       message: "Please provide email & password",
     });
   }
-  const userFound = await User.find({ email });
+  const userFound = await User.find({ email: email });
   if (userFound.length == 0) {
     return res.status(400).json({
       message: "Please register with this email",
