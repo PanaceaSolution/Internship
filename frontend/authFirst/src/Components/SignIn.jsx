@@ -19,7 +19,7 @@ const SignIn = () => {
       });
       const data = await response.json();
 
-      if (response.ok) {
+      if (response.status === 200) {
         localStorage.setItem('token', data.token);
         alert("Login successful!");
         navigate('/');
